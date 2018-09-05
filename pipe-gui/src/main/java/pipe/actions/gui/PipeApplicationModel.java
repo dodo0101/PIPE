@@ -66,7 +66,8 @@ public class PipeApplicationModel implements Serializable {
      * @param version e.g. 5
      */
     public PipeApplicationModel(String version) {
-        name = "PIPE: Platform Independent Petri Net Editor " + version;
+        //name = "PIPE: Platform Independent Petri Net Editor " + version;
+    	name = "PERFoRM Petri Net Viewer";
     }
 
     /**

@@ -8,6 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+import uk.ac.imperial.pipe.models.manager.PetriNetManagerImpl;
+import uk.ac.imperial.pipe.models.petrinet.PetriNet;
+import pipe.views.PipeApplicationView;
+
 public class GridAction extends GuiAction {
     private final PipeApplicationController applicationController;
 
@@ -22,6 +26,18 @@ public class GridAction extends GuiAction {
         Grid grid = petriNetTab.getGrid();
         grid.increment();
         petriNetTab.repaint();
+        
+        
+        
+        //Saving check
+       /* 
+        PetriNetManagerImpl test = new PetriNetManagerImpl();
+        PetriNet petriNet = (PetriNet) evt.getNewValue();
+        test.savePetriNet(petriNet, outFile);
+        */
+        
+        
+        
     }
 
 }

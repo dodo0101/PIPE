@@ -1,5 +1,6 @@
 import pipe.actions.gui.PipeApplicationModel;
 import pipe.controllers.application.PipeApplicationController;
+import pipe.views.PerformApplicationBuilder;
 import pipe.views.PipeApplicationBuilder;
 import pipe.views.PipeApplicationView;
 
@@ -14,6 +15,7 @@ public final class Pipe {
         PipeApplicationModel applicationModel = new PipeApplicationModel(version);
         PipeApplicationController applicationController = new PipeApplicationController(applicationModel);
         PipeApplicationBuilder builder = new PipeApplicationBuilder();
+        //PerformApplicationBuilder builder = new PerformApplicationBuilder();
         applicationView = builder.build(applicationController, applicationModel);
         applicationController.createEmptyPetriNet();
 
@@ -28,7 +30,7 @@ public final class Pipe {
         return new Runnable() {
             @Override
             public void run() {
-                new Pipe("v5.0.2");
+                new Pipe("v1.0.0");
             }
         };
     }

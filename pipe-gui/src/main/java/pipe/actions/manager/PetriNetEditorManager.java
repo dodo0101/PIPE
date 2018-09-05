@@ -18,7 +18,7 @@ public class PetriNetEditorManager implements ActionManager {
     /**
      * Creates a new Petri net
      */
-    private final GuiAction newPetriNetAction;
+    //private final GuiAction newPetriNetAction;
 
     /**
      * Loads a Petri net from an XML file
@@ -46,7 +46,7 @@ public class PetriNetEditorManager implements ActionManager {
      * @param applicationController main PIPE application controller
      */
     public PetriNetEditorManager(PipeApplicationView view, PipeApplicationController applicationController) {
-        newPetriNetAction = new NewPetriNetAction(applicationController);
+        //newPetriNetAction = new NewPetriNetAction(applicationController);
         closeAction = new CloseWindowAction(applicationController);
 
         FileDialog fileDialog = new FileDialog(view, "Save Petri Net", FileDialog.SAVE);
@@ -75,7 +75,7 @@ public class PetriNetEditorManager implements ActionManager {
      */
     @Override
     public Iterable<GuiAction> getActions() {
-        return Arrays.asList(newPetriNetAction, openAction, saveAction, saveAsAction,
+        return Arrays.asList(/*newPetriNetAction, */ openAction, saveAction, saveAsAction,
                 closeAction);
 
     }
@@ -95,8 +95,8 @@ public class PetriNetEditorManager implements ActionManager {
      */
     @Override
     public void disableActions() {
-        saveAction.setEnabled(false);
-        saveAsAction.setEnabled(false);
+        saveAction.setEnabled(true);
+        saveAsAction.setEnabled(true);
 
     }
 }

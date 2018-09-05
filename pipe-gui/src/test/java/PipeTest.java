@@ -32,7 +32,7 @@ public class PipeTest {
 
         applicationView = Pipe.applicationView;
     }
-
+/*
     @Test
     public void verifyMenusAddedToGui() throws Exception {
         assertEquals("expecting 6 top-level menus", 6, applicationView.getJMenuBar().getMenuCount());
@@ -133,7 +133,7 @@ public class PipeTest {
         AbstractButton animateButton = ((AbstractButton) toolbar.getComponent(20));
         animateButton.getAction().actionPerformed(null);
 //        selectMenuItem(menu, 2);
-    }
+    }*/
 
     private Action selectMenuItem(JMenu menu, int selection) {
         Action action = getActionForMenuItem(menu, selection);

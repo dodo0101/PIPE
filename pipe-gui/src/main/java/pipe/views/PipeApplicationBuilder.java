@@ -85,6 +85,7 @@ public final class PipeApplicationBuilder {
     public PipeApplicationView build(PipeApplicationController controller, PipeApplicationModel model) {
         ZoomUI zoomUI = new ZoomUI(1, 0.1, 3, 0.4, controller);
         PipeApplicationView view = new PipeApplicationView(zoomUI, controller, model);
+
         final PIPEComponents pipeComponents = buildComponents(view, model, controller, zoomUI);
         JToolBar drawingToolBar = getDrawingToolBar(pipeComponents, view);
         JToolBar animationToolBar = getAnimationToolBar(pipeComponents);
@@ -155,23 +156,32 @@ public final class PipeApplicationBuilder {
      */
     private JToolBar getDrawingToolBar(PIPEComponents pipeComponents, PipeApplicationView view) {
         JToolBar drawingToolBar = new JToolBar();
+        
         drawingToolBar.setFloatable(false);
 
         addButton(drawingToolBar, pipeComponents.selectAction);
-        drawingToolBar.addSeparator();
+        //drawingToolBar.addSeparator();
+        
+        
+        // Drawing instruments
+        /*
         for (GuiAction action : pipeComponents.componentCreatorManager.getActions()) {
             addButton(drawingToolBar, action);
         }
-        drawingToolBar.addSeparator();
-
+        
+       drawingToolBar.addSeparator();
+        
+        
         for (GuiAction action : pipeComponents.tokenActionManager.getActions()) {
             addButton(drawingToolBar, action);
         }
-
         addTokenClassComboBox(drawingToolBar, pipeComponents.chooseTokenClassAction, view);
-        addButton(drawingToolBar, pipeComponents.unfoldAction);
-        addButton(drawingToolBar, pipeComponents.layoutAction);
+        
+        //addButton(drawingToolBar, pipeComponents.unfoldAction);
+        //addButton(drawingToolBar, pipeComponents.layoutAction);
         drawingToolBar.addSeparator();
+        */
+        
         return drawingToolBar;
     }
 
@@ -211,26 +221,37 @@ public final class PipeApplicationBuilder {
         for (GuiAction action : pipeComponents.editorManager.getActions()) {
             addButton(toolBar, action);
         }
-
         toolBar.addSeparator();
+        
         addButton(toolBar, pipeComponents.printAction);
         toolBar.addSeparator();
+        
+        /*
+         * Another Editor
         for (GuiAction action : pipeComponents.componentEditorManager.getActions()) {
             addButton(toolBar, action);
         }
         toolBar.addSeparator();
-
-        addButton(toolBar, pipeComponents.zoomOutAction);
-        addZoomComboBox(toolBar, pipeComponents.zoomAction, examples, view);
-        addButton(toolBar, pipeComponents.zoomInAction);
-        toolBar.addSeparator();
+		*/
+        
+        // Zoom - not working buttons
+        //addButton(toolBar, pipeComponents.zoomOutAction);
+        //addZoomComboBox(toolBar, pipeComponents.zoomAction, examples, view);
+        //addButton(toolBar, pipeComponents.zoomInAction);
+        //toolBar.addSeparator();
+        
         addButton(toolBar, pipeComponents.toggleGrid);
+        
+        
+        // Actions with pnet
+        
         for (GuiAction action : pipeComponents.animateActionManager.getEditActions()) {
             addButton(toolBar, action);
         }
 
 
         toolBar.addSeparator();
+        
         toolBar.add(drawingToolBar);
 
 
@@ -263,8 +284,8 @@ public final class PipeApplicationBuilder {
             addMenuItem(fileMenu, action);
         }
 
-        fileMenu.addSeparator();
-        addMenuItem(fileMenu, pipeComponents.importAction);
+        //fileMenu.addSeparator();
+        //addMenuItem(fileMenu, pipeComponents.importAction);
 
         // Export menu
 
@@ -272,21 +293,21 @@ public final class PipeApplicationBuilder {
         JMenu exportMenu = new JMenu("Export");
         exportMenu.setIcon(new ImageIcon(getImageURL("Export")));
         addMenuItem(exportMenu, pipeComponents.exportPNGAction);
-        addMenuItem(exportMenu, pipeComponents.exportPSAction);
-        addMenuItem(exportMenu, pipeComponents.exportTNAction);
+        //addMenuItem(exportMenu, pipeComponents.exportPSAction);
+        //addMenuItem(exportMenu, pipeComponents.exportTNAction);
         fileMenu.add(exportMenu);
         fileMenu.addSeparator();
         addMenuItem(fileMenu, pipeComponents.printAction);
         fileMenu.addSeparator();
 
         // Example files menu
-        JMenu exampleMenu = createExampleFileMenu(view, controller);
-
-        fileMenu.add(exampleMenu);
-        fileMenu.addSeparator();
+        
+        //JMenu exampleMenu = createExampleFileMenu(view, controller);
+        //fileMenu.add(exampleMenu);
+        //fileMenu.addSeparator();
 
         addMenuItem(fileMenu, pipeComponents.exitAction);
-
+/*
         JMenu editMenu = new JMenu("Edit");
         editMenu.setMnemonic('E');
 
@@ -297,13 +318,13 @@ public final class PipeApplicationBuilder {
         JMenu drawMenu = new JMenu("Draw");
         drawMenu.setMnemonic('D');
         addMenuItem(drawMenu, pipeComponents.selectAction);
-
+*/
         KeyStroke stroke = KeyStroke.getKeyStroke("ESCAPE");
         InputMap inputMap = view.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         inputMap.put(stroke, "ESCAPE");
 
         view.getRootPane().getActionMap().put("ESCAPE", pipeComponents.selectAction);
-
+/*
         drawMenu.addSeparator();
         for (GuiAction action : pipeComponents.componentCreatorManager.getActions()) {
             addMenuItem(drawMenu, action);
@@ -314,10 +335,10 @@ public final class PipeApplicationBuilder {
         }
         addMenuItem(drawMenu, pipeComponents.unfoldAction);
         drawMenu.addSeparator();
-
+*/
         JMenu viewMenu = new JMenu("View");
         viewMenu.setMnemonic('V');
-
+/*
         JMenu zoomMenu = new JMenu("Zoom");
         zoomMenu.setIcon(new ImageIcon(getImageURL("Zoom")));
         addZoomMenuItems(zoomMenu, zoomActions);
@@ -328,6 +349,7 @@ public final class PipeApplicationBuilder {
         viewMenu.add(zoomMenu);
 
         viewMenu.addSeparator();
+*/
         addMenuItem(viewMenu, pipeComponents.toggleGrid);
 
         JMenu animateMenu = new JMenu("Animate");
@@ -340,16 +362,17 @@ public final class PipeApplicationBuilder {
         JMenu helpMenu = new JMenu("Help");
         helpMenu.setMnemonic('H');
 
-        JMenuItem aboutItem = helpMenu.add("About PIPE");
+        //JMenuItem aboutItem = helpMenu.add("About PIPE");
+        
         // Help - About is implemented
-        aboutItem.addActionListener(view);
+        //aboutItem.addActionListener(view);
         // differently
-        aboutItem.setIcon(new ImageIcon(getImageURL("About")));
+        //aboutItem.setIcon(new ImageIcon(getImageURL("About")));
 
         menuBar.add(fileMenu);
-        menuBar.add(editMenu);
+ //       menuBar.add(editMenu);
         menuBar.add(viewMenu);
-        menuBar.add(drawMenu);
+ //       menuBar.add(drawMenu);
         menuBar.add(animateMenu);
         menuBar.add(helpMenu);
         return menuBar;
@@ -494,7 +517,7 @@ public final class PipeApplicationBuilder {
 
     /**
      * Creates an example file menu based on examples in resources/extras/examples
-     */
+     
     private JMenu createExampleFileMenu(PipeApplicationView view, PipeApplicationController controller) {
         if (isJar()) {
             try {
@@ -517,7 +540,7 @@ public final class PipeApplicationBuilder {
             LOGGER.log(Level.SEVERE, e.getMessage());
         }
         return exampleMenu;
-    }
+    }*/
 
     /**
      * @param zoomMenu to add to the applications menu bar
