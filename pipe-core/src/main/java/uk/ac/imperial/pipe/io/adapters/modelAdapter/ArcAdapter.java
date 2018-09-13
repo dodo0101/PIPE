@@ -15,6 +15,7 @@ import java.util.Map;
 public class ArcAdapter extends XmlAdapter<AdaptedArc, Arc<? extends Connectable, ? extends Connectable>> {
 
     /**
+     * 
      * Place id of the Place
      */
     private final Map<String, Place> places;

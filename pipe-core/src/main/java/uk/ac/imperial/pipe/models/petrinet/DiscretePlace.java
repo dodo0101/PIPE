@@ -162,6 +162,8 @@ public final class DiscretePlace extends AbstractConnectable implements Place {
      *
      * This overrides any previous token counts.
      * @param tokenCounts to be set
+     * 
+     * FEDOR DONT FUCK IT UP
      */
     @Override
     public void setTokenCounts(Map<String, Integer> tokenCounts) {

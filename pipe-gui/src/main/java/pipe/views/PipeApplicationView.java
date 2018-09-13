@@ -91,16 +91,6 @@ public class PipeApplicationView extends JFrame implements ActionListener, Obser
 
 				if (evt.getPropertyName().equals(PetriNetManagerImpl.NEW_PETRI_NET_MESSAGE)) {
 					PetriNet petriNet = (PetriNet) evt.getNewValue();
-
-					/*
-					 * 
-					 * 
-					 * PetriNetManagerImpl test = new PetriNetManagerImpl();
-					 * test.savePetriNet(petriNet, outFile);
-					 * 
-					 *
-					 */
-
 					registerNewPetriNet(petriNet);
 				} else if (evt.getPropertyName().equals(PetriNetManagerImpl.REMOVE_PETRI_NET_MESSAGE)) {
 					removeCurrentTab();
@@ -150,24 +140,34 @@ public class PipeApplicationView extends JFrame implements ActionListener, Obser
 		this.setForeground(java.awt.Color.BLACK);
 		this.setBackground(java.awt.Color.WHITE);
 		
+		/*
+		 * MODIFIED BY FEDOR
+		 * 1. List of modules - deleted
+		 * 2. Pane is created by pnetTab + animationhistory
+		 * 
+		 * */
 		
 		//ModuleManager moduleManager = new ModuleManager(this, applicationController);
 		//JTree moduleTree = moduleManager.getModuleTree();
 		//moduleAndAnimationHistoryFrame = new JSplitPane(JSplitPane.VERTICAL_SPLIT, moduleTree, null);
 		
-		moduleAndAnimationHistoryFrame = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		moduleAndAnimationHistoryFrame.setContinuousLayout(true);
-		moduleAndAnimationHistoryFrame.setDividerSize(0);
+		moduleAndAnimationHistoryFrame = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, null, null);
+ 		moduleAndAnimationHistoryFrame.setContinuousLayout(true);
+		moduleAndAnimationHistoryFrame.setBottomComponent(frameForPetriNetTabs);
 		
-		JSplitPane pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, moduleAndAnimationHistoryFrame,
-				frameForPetriNetTabs);
-		pane.setContinuousLayout(true);
-		pane.setOneTouchExpandable(false);
 		
+		//JSplitPane pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, moduleAndAnimationHistoryFrame,
+		//		frameForPetriNetTabs);
+		//pane.setContinuousLayout(true);
+		//pane.setOneTouchExpandable(false);
+	
 		// avoid multiple borders
-		pane.setBorder(null);
-		pane.setDividerSize(5);
-		getContentPane().add(pane);
+		//pane.setBorder(null);
+		//pane.setDividerSize(2);
+		//getContentPane().add(pane);
+		moduleAndAnimationHistoryFrame.setBorder(null);
+		moduleAndAnimationHistoryFrame.setDividerSize(2);
+		getContentPane().add(moduleAndAnimationHistoryFrame);
 		
 		setVisible(true);
 		applicationModel.setMode(GUIConstants.SELECT);
@@ -300,14 +300,14 @@ public class PipeApplicationView extends JFrame implements ActionListener, Obser
 	}
 
 	public void setAnimationMode(boolean animateMode) {
-	//	if (animateMode) {
+		if (animateMode) {
 			statusBar.changeText(statusBar.TEXT_FOR_ANIMATION);
 			createAnimationViewPane();
 
-		/*} else {
-			statusBar.changeText(statusBar.TEXT_FOR_DRAWING);
+		} else {
+			//statusBar.changeText(statusBar.TEXT_FOR_DRAWING);
 			removeAnimationViewPlane();
-		}*/
+		}
 	}
 	
 
@@ -327,9 +327,9 @@ public class PipeApplicationView extends JFrame implements ActionListener, Obser
 		scroller = new JScrollPane(animationHistoryView);
 		scroller.setBorder(new EmptyBorder(0, 0, 0, 0));
 
-		moduleAndAnimationHistoryFrame.setBottomComponent(scroller);
-		moduleAndAnimationHistoryFrame.setDividerLocation(0.5);
-		moduleAndAnimationHistoryFrame.setDividerSize(8);
+		moduleAndAnimationHistoryFrame.setTopComponent(scroller);
+		moduleAndAnimationHistoryFrame.setDividerLocation(110);
+		moduleAndAnimationHistoryFrame.setDividerSize(0);
 	}
 
 	public void setToolBar(JToolBar toolBar) {
@@ -422,7 +422,7 @@ public class PipeApplicationView extends JFrame implements ActionListener, Obser
 		JScrollPane tabScroller = new JScrollPane(tab, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		tabScroller.setBorder(new BevelBorder(BevelBorder.LOWERED));
-
+		
 		// JLayer<JComponent> jLayer = new JLayer<>(tab, zoomUI);
 		// wrappedPetrinetTabs.add(jLayer);
 

@@ -15,7 +15,6 @@ public final class Pipe {
         PipeApplicationModel applicationModel = new PipeApplicationModel(version);
         PipeApplicationController applicationController = new PipeApplicationController(applicationModel);
         PipeApplicationBuilder builder = new PipeApplicationBuilder();
-        //PerformApplicationBuilder builder = new PerformApplicationBuilder();
         applicationView = builder.build(applicationController, applicationModel);
         applicationController.createEmptyPetriNet();
 

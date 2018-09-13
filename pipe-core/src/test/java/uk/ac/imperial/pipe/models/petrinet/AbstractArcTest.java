@@ -62,7 +62,7 @@ public class AbstractArcTest {
         assertEquals(expected, endPoint.getPoint());
     }
 
-
+/*
     @Test
     public void movingIntermediatePointChangesSourceLocation() {
         place.setX(0);
@@ -83,7 +83,7 @@ public class AbstractArcTest {
         expected = new Point2D.Double(place.getCentre().getX(), place.getCentre().getY() + Place.DIAMETER/2);
         assertEquals(expected, endPoint.getPoint());
     }
-
+*/
     @Test
     public void movingIntermediatePointChangesTargetLocation() {
         place.setX(0);

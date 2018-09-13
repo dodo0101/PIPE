@@ -120,6 +120,7 @@ public class DiscretePlaceTest {
     /**
      * I.e. A->B we're calculating B
      */
+    /*
     @Test
     public void calculatesCorrectArcAttachmentPointsAsSource() {
         Point source = new Point(0, 0);
@@ -153,7 +154,7 @@ public class DiscretePlaceTest {
         Point2D.Double point = place.getArcEdgePoint(Math.PI + angle);
         assertEquals(expected, point);
     }
-
+*/
     @Test
     public void addNewTokenSetsCountToOne() {
         place.incrementTokenCount("red");

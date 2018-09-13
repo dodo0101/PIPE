@@ -56,7 +56,6 @@ public class AdaptedPlace extends AdaptedConnectable {
         this.capacity = capacity;
     }
 
-
     /**
      * Verbose way of storing the token counts in PNML
      */

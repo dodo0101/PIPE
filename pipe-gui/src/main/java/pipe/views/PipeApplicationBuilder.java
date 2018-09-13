@@ -68,6 +68,7 @@ import pipe.gui.PipeResourceLocator;
  * <p>
  * This class does a bit too much, but it took the logic out of the {@link pipe.views.PipeApplicationView} class itself
  * </p>
+ * check for succsess
  */
 public final class PipeApplicationBuilder {
 
@@ -160,9 +161,14 @@ public final class PipeApplicationBuilder {
         drawingToolBar.setFloatable(false);
 
         addButton(drawingToolBar, pipeComponents.selectAction);
+        
+        /*
+         * MODIFIED BE FEDOR
+         * 1. DELETE DRAWING INSTRUMENTS
+         * 2. DELETE ADDITIONAL SEPARATORS
+         * */
+        
         //drawingToolBar.addSeparator();
-        
-        
         // Drawing instruments
         /*
         for (GuiAction action : pipeComponents.componentCreatorManager.getActions()) {
@@ -226,6 +232,12 @@ public final class PipeApplicationBuilder {
         addButton(toolBar, pipeComponents.printAction);
         toolBar.addSeparator();
         
+        
+        /*
+         * MODIFIED BY FEDOR
+         * DELETED ADDITIONAL ACTIONS
+         * */
+        
         /*
          * Another Editor
         for (GuiAction action : pipeComponents.componentEditorManager.getActions()) {
@@ -233,6 +245,8 @@ public final class PipeApplicationBuilder {
         }
         toolBar.addSeparator();
 		*/
+        
+
         
         // Zoom - not working buttons
         //addButton(toolBar, pipeComponents.zoomOutAction);
@@ -283,7 +297,14 @@ public final class PipeApplicationBuilder {
         for (GuiAction action : pipeComponents.editorManager.getActions()) {
             addMenuItem(fileMenu, action);
         }
-
+        
+        /*
+         * MODIFIED BY FEDOR
+         * DELETE JMenu buttons
+         * 
+         * 
+         * */
+        
         //fileMenu.addSeparator();
         //addMenuItem(fileMenu, pipeComponents.importAction);
 

@@ -71,7 +71,7 @@ public class PlaceView extends ConnectableView<Place> {
 
 
     /**
-     * Paints the Place component taking into account the n q12[umber of tokens from
+     * Paints the Place component taking into account the number of tokens from
      * the storeCurrentMarking
      *
      * @param g The PositionGraphics object onto which the Place is drawn.
@@ -141,11 +141,19 @@ public class PlaceView extends ConnectableView<Place> {
     private void paintTokens(Graphics2D g2) {
         int totalMarking = model.getNumberOfTokensStored();
         boolean displayTextualNumber = totalMarking > 5;
-        if (displayTextualNumber) {
+        
+        /*
+         * MODIFIED BY FEDOR 
+         * HIDE TOKENS
+         * 
+         * */
+        
+        /*if (displayTextualNumber) {
             displayTextualTokens(g2);
         } else {
             displayOvalTokens(g2);
-        }
+             
+        }*/
 
     }
 
